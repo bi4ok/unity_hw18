@@ -56,7 +56,7 @@ public class InterfaceController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.IsTouchingLayers(9) && !_cutScenePlayed)
+        if (collision.gameObject.layer == 9 && !_cutScenePlayed)
         {
             _cutScenePlayed = true;
             StartCoroutine(CutScenePlay());
