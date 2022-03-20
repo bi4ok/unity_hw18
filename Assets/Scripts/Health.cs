@@ -12,18 +12,17 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("PLAYER HEALTH AWAKE!!!");
         _playerAnimator = GetComponent<Animator>();
         _currentHealth = maxHealth;
         _isAlive = true;
+        Debug.Log(_currentHealth);
     }
 
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
         CheckIsAlive();
-        Debug.Log(gameObject.name);
-        Debug.Log(_currentHealth);
-        Debug.Log(_isAlive);
         if (!_isAlive)
         {
             _playerAnimator.SetTrigger("Death");

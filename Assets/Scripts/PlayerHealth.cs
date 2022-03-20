@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject playerEvent;
     [SerializeField] private Image heartImage;
     [SerializeField] private Sprite fullHP;
     [SerializeField] private Sprite halfHP;
@@ -14,10 +14,11 @@ public class PlayerHealth : MonoBehaviour
     private Text _currentHealthText;
     private Health _playerHealth;
 
-    private void Awake()
+    private void Start()
     {
+        var interfaceControl = playerEvent.GetComponent<InterfaceController>();
+        _playerHealth = interfaceControl.GetPlayerHealth();
         _currentHealthText = GetComponent<Text>();
-        _playerHealth = player.GetComponent<Health>();
         _currentHealthText.text = $"{_playerHealth.GetCurrentHealth()}";
     }
 

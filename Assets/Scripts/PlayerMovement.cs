@@ -21,14 +21,12 @@ public class PlayerMovement : MonoBehaviour
     private Animator _playerAnimator;
     private Rigidbody2D _playerRBody;
     private SpriteRenderer _playerSprite;
-    private Vector3 _cameraOffset;
    
     private void Awake()
     {
         _playerAnimator = GetComponent<Animator>();
         _playerRBody = GetComponent<Rigidbody2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
-        _cameraOffset = _playerRBody.transform.position - cameraOnPlayer.transform.position;
 
     }
 
@@ -36,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 overlapCirclePosition = groundColliderTransform.position;
         isGrounded = Physics2D.OverlapCircle(overlapCirclePosition, jumpOffset, groundMask);
-        cameraOnPlayer.transform.position = _playerRBody.transform.position - _cameraOffset;
 
     }
 
